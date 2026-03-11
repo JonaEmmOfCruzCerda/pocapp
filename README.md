@@ -69,7 +69,7 @@ poc-app/
 │       ├── styles/
 │       │   └── main.css
 │       └── main.js
-├── Dockerfile
+│       └── Dockerfile
 ├── .gitignore
 ├── docker-compose.yml
 └── README.md
