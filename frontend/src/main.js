@@ -1,18 +1,37 @@
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("loginForm");
 
-  form.addEventListener("submit", (event) => {
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     const formData = new FormData(form);
     const username = formData.get("username");
     const password = formData.get("password");
 
-    console.log("Login intento:", { username, password });
+    try {
+      const response = await fetch("http://localhost:3000/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      });
 
-    // TODO: aquí luego haremos fetch al backend:
-    // fetch("http://localhost:3000/api/login", { ... })
+      if (!response.ok) {
+        const errorData = await response.json();
+        alert(errorData.error || "Error al iniciar sesión");
+        return;
+      }
 
-    alert(`Bienvenido, ${username || "usuario"}. (Simulación de login)`);
+      const data = await response.json();
+      console.log("Login OK:", data);
+
+      // Aquí luego redirigiremos al formulario de perfil
+      alert(`Login correcto, bienvenido ${data.username}`);
+      // window.location.href = "/pages/profile.html";
+    } catch (error) {
+      console.error("Error en login:", error);
+      alert("No se pudo conectar con el servidor");
+    }
   });
 });

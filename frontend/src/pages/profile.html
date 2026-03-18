@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Perfil • POC App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../styles/main.css" />
+</head>
+<body>
+  <main class="profile-page">
+    <section class="profile-card">
+      <h1>Perfil de usuario</h1>
+
+      <form id="profileForm" class="profile-form">
+        <label>
+          Nombre completo
+          <input type="text" name="fullName" required />
+        </label>
+
+        <label>
+          Biografía
+          <textarea name="bio" rows="3"></textarea>
+        </label>
+
+        <label>
+          Sitio web
+          <input type="url" name="website" />
+        </label>
+
+        <label>
+          Teléfono
+          <input type="tel" name="phone" />
+        </label>
+
+        <button type="submit">Guardar cambios</button>
+      </form>
+
+      <p id="profileMessage" class="profile-message"></p>
+    </section>
+  </main>
+
+  <script src="../profile.js"></script>
+</body>
+</html>
